@@ -14,6 +14,9 @@ public class DirectedGraph<V> implements IGraph<V> {
     private Map<V,List<V>> vertexMap = new TreeMap<V,List<V>>();
     private int numVertices;
 
+
+
+
     public DirectedGraph(V vertex, List<V> adjVertices) {
         this.vertex = vertex;
         this.adjVertices = adjVertices;
@@ -45,12 +48,12 @@ public class DirectedGraph<V> implements IGraph<V> {
 
     @Override
     public void clear() {
-
+        vertexMap.clear();
     }
 
     @Override
     public boolean contains(V label) {
-        return false;
+        return vertexMap.containsKey(label);
     }
 
     @Override
@@ -79,12 +82,47 @@ public class DirectedGraph<V> implements IGraph<V> {
     }
     @Override
     public List<V> shortestPath(V start, V destination) {
-        return null;
+        //return null;
+
+        final int INF = Integer.MAX_VALUE; //INF
+
+        start = null;
+        destination = null;
+        double weight = 0;
+        List<V> ListArray = new ArrayList<>();
+
+        //IGraph<V> igraph =new IGraph[];
+
+
+        if (weight == 0 && start == destination)
+            return ListArray = null;
+
+        if (weight == 1 && IGraph[start][destination] != INF)
+            return IGraph [start][destination];
+
+        if (weight <= 0)
+            return INF;
+
+        V res = INF;
+
+        // Go to all adjacents of u and recur
+        for (int i = 0; i < V; i++)
+        {
+            if (IGraph[start][i] != INF && start != i && destination != i)
+            {
+                int rec_res = shortestPath(IGraph, i, destination, weight-1);
+                if (rec_res != INF)
+                    res = Math.min(res, IGraph[start][i] + rec_res);
+            }
+        }
+        return res;
     }
+
 
     @Override
     public int size() {
-        return numVertices;
+        //return numVertices;
+        return (vertexMap.size() & 0x7FFFFFFF);
     }
 
     @Override
